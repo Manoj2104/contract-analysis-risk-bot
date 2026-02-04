@@ -3,27 +3,29 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor, white
 import datetime
 import textwrap
+import tempfile
+import os
 
 PAGE_WIDTH, PAGE_HEIGHT = A4
+
+
+# =================================================
+# PAGE HELPERS
+# =================================================
 def ensure_space(c, y, min_space=140):
-    """
-    Ensures there is enough vertical space before drawing content.
-    If not, creates a new page and resets layout.
-    """
     if y < min_space:
         c.showPage()
-
-        # Redraw background
-        c.setFillColor(HexColor("#020617"))
-        c.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
-        left_accent_bar(c)
-
+        draw_background(c)
         return PAGE_HEIGHT - 80
     return y
 
-# =================================================
-# HELPERS
-# =================================================
+
+def draw_background(c):
+    c.setFillColor(HexColor("#020617"))
+    c.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
+    left_accent_bar(c)
+
+
 def footer(c, page_no):
     c.setStrokeColor(HexColor("#1f2937"))
     c.line(40, 55, PAGE_WIDTH - 40, 55)
@@ -72,7 +74,7 @@ def kpi(c, x, y, title, value, bg):
 
 
 # =================================================
-# MAIN PDF
+# MAIN PDF GENERATOR
 # =================================================
 def generate_pdf_report(
     contract_type,
@@ -82,8 +84,13 @@ def generate_pdf_report(
     decision,
     missing_clauses
 ):
-    filename = "AI_Contract_Risk_Report.pdf"
-    c = canvas.Canvas(filename, pagesize=A4)
+    output_path = os.path.join(
+        tempfile.gettempdir(),
+        "Contract_Risk_Report.pdf"
+    )
+
+    c = canvas.Canvas(output_path, pagesize=A4)
+    page_no = 1
 
     # COLORS
     bg = HexColor("#020617")
@@ -94,10 +101,7 @@ def generate_pdf_report(
     red = HexColor("#dc2626")
     muted = HexColor("#9ca3af")
 
-    # BACKGROUND
-    c.setFillColor(bg)
-    c.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
-    left_accent_bar(c)
+    draw_background(c)
 
     # HEADER
     card(c, 14, PAGE_HEIGHT - 120, PAGE_WIDTH, 120, card_bg)
@@ -129,31 +133,24 @@ def generate_pdf_report(
     c.drawString(40, y, f"Contract Type: {contract_type}")
     y -= 18
 
-    # ---- START CONTENT TRACK
     start_y = y
-
-    # TEMP TEXT PASS (to calculate height)
     temp_y = y - 20
+
     for section, values in entities.items():
         if not values:
             continue
-        temp_y -= 14  # section title
+        temp_y -= 14
         for v in values:
             temp_y -= 14 * (len(v) // 90 + 1)
         temp_y -= 10
 
     card_height = start_y - temp_y + 16
-
-    # ---- DRAW CARD (AUTO HEIGHT)
     card(c, 40, start_y - card_height, PAGE_WIDTH - 80, card_height, card_bg)
 
-    # ---- DRAW CONTENT
     ty = start_y - 20
-
     for section, values in entities.items():
         if not values:
             continue
-
         c.setFont("Helvetica-Bold", 10)
         c.setFillColor(purple)
         c.drawString(55, ty, section)
@@ -165,8 +162,8 @@ def generate_pdf_report(
             ty = paragraph(c, f"• {v}", 60, ty)
         ty -= 10
 
-    # ---- MOVE Y BELOW CARD (CRITICAL FIX)
     y = start_y - card_height - 30
+
     # =================================================
     # 2. RISK DASHBOARD
     # =================================================
@@ -183,18 +180,17 @@ def generate_pdf_report(
     # =================================================
     y = section_title(c, "3. Final AI Decision", y)
 
+    decision_text = decision.get("decision", "Review Required")
+    explanation = decision.get("explanation", "")
+
     card(c, 40, y - 60, PAGE_WIDTH - 80, 60, green)
 
     c.setFont("Helvetica-Bold", 14)
     c.setFillColor(white)
-    c.drawString(55, y - 32, "Sign After Changes")
+    c.drawString(55, y - 32, decision_text)
 
     c.setFont("Helvetica", 10)
-    c.drawString(
-        55,
-        y - 48,
-        "The contract contains one or more medium-risk clauses. These clauses should be revised or clarified before signing."
-    )
+    c.drawString(55, y - 48, explanation)
 
     y -= 90
 
@@ -203,25 +199,38 @@ def generate_pdf_report(
     # =================================================
     y = section_title(c, "4. Missing Clauses", y)
 
+    missing = []
+    if isinstance(missing_clauses, dict):
+        missing = missing_clauses.get("critical", []) + missing_clauses.get("optional", [])
+    elif isinstance(missing_clauses, list):
+        missing = missing_clauses
+
     c.setFont("Helvetica", 10)
-    c.setFillColor(red)
-    for m in missing_clauses:
-        c.drawString(55, y, f"• {m}")
+    c.setFillColor(red if missing else green)
+
+    if not missing:
+        c.drawString(55, y, "No important clauses missing.")
         y -= 14
+    else:
+        for m in missing:
+            c.drawString(55, y, f"• {m}")
+            y -= 14
 
     y -= 20
 
     # =================================================
     # 5. HIGH RISK CLAUSE SUMMARY
     # =================================================
-    y = ensure_space(c, y, min_space=160)
-    y = section_title(c, "5. High Risk Clause Summary", y)  
+    y = ensure_space(c, y)
+    y = section_title(c, "5. High Risk Clause Summary", y)
 
     risky = clause_df[clause_df["Risk"].isin(["High", "Medium"])].head(5)
+
     c.setFont("Helvetica", 10)
     c.setFillColor(white)
 
     for _, row in risky.iterrows():
+        y = ensure_space(c, y)
         y = paragraph(
             c,
             f"Clause {row['Clause ID']} ({row['Risk']}): {row['Reasons']}",
@@ -229,8 +238,7 @@ def generate_pdf_report(
             y
         )
 
-    # FOOTER
-    footer(c, 1)
+    footer(c, page_no)
     c.save()
 
-    return filename
+    return output_path

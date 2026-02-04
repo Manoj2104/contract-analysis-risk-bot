@@ -1,27 +1,23 @@
+import os
+import shutil
+import pytesseract
 import streamlit as st
-import PyPDF2
 import pandas as pd
 import matplotlib.pyplot as plt
 import fitz
-import re
 import io
-import os
 import re
 from typing import List, Dict
-
 from PIL import Image
-import pytesseract
 from modules.clause_extractor import extract_clauses
 from modules.contract_classifier import classify_contract
 from modules.ner import extract_entities
 from modules.clause_risk import assess_risk
 from modules.contract_risk_aggregator import aggregate_contract_risk
 from modules.decision_engine import make_final_decision
-from modules.missing_clause_detector import detect_missing_clauses
 from modules.executive_summary import generate_executive_summary
 from modules.pdf_report import generate_pdf_report
 from modules.clause_rewriter import rewrite_clause
-from modules.plain_english import explain_risk_plain
 from modules.indian_law_checker import check_indian_law_issues
 from modules.ambiguity_detector import detect_ambiguity
 from modules.clause_explainer import explain_clause_plain_english
@@ -30,10 +26,18 @@ from modules.contract_entity_normalizer import normalize_contract_entities
 from pathlib import Path
 from modules.language_detector import detect_language
 from modules.hindi_normalizer import normalize_hindi_to_english
-from transformers import MarianMTModel, MarianTokenizer
 from deep_translator import GoogleTranslator
-from modules.clause_explainer import explain_clause_plain_english
 import random
+
+
+# PAGE CONFIG
+
+st.set_page_config(
+    page_title="AI Contract Risk Dashboard",
+    page_icon="⚖️",
+    layout="wide"
+)
+
 #========================================================================
 # HINDI → ENGLISH TRANSLATION
 def is_devanagari(text: str) -> bool:
@@ -43,71 +47,56 @@ def is_devanagari(text: str) -> bool:
 def get_translator():
     return GoogleTranslator(source="hi", target="en")
 
-@st.cache_resource
-def load_hi_en_model():
-    try:
-        from transformers import MarianMTModel, MarianTokenizer
-        tokenizer = MarianTokenizer.from_pretrained(
-            "Helsinki-NLP/opus-mt-hi-en"
-        )
-        model = MarianMTModel.from_pretrained(
-            "Helsinki-NLP/opus-mt-hi-en"
-        )
-        return tokenizer, model
-    except Exception as e:
-        return None, None
-
-def translate_hi_to_en(text):
-    tokenizer, model = load_hi_en_model()
-    tokens = tokenizer(
-        text,
-        return_tensors="pt",
-        truncation=True,
-        max_length=512
-    )
-    translated = model.generate(**tokens)
-    return tokenizer.decode(
-        translated[0],
-        skip_special_tokens=True
-    )
 
 def translate_hi_to_en_ui(text: str) -> str:
     try:
-        if is_devanagari(text):
-            translator = get_translator()
-            return translator.translate(text)
+        if re.search(r'[\u0900-\u097F]', text):
+            return get_translator().translate(text)
         return text
     except Exception:
         return text
-    
-@st.cache_data(show_spinner=False)
-def translate_hi_to_en_batch(texts):
-    tokenizer, model = load_hi_en_model()
 
-    # 🔴 FALLBACK: If translation model not available
-    if tokenizer is None or model is None:
-        return texts  # return original safely
 
-    tokens = tokenizer(
-        texts,
-        return_tensors="pt",
-        padding=True,
-        truncation=True,
-        max_length=512
-    )
+def configure_tesseract():
+    """
+    Works everywhere:
+    - Local Windows / Mac / Linux
+    - Streamlit Cloud / PythonAnywhere
+    OCR is OPTIONAL and safely disabled if not available
+    """
 
-    outputs = model.generate(**tokens)
+    # 1️⃣ Linux / Cloud / Mac
+    tesseract_path = shutil.which("tesseract")
+    if tesseract_path:
+        pytesseract.pytesseract.tesseract_cmd = tesseract_path
+        return tesseract_path
 
-    return tokenizer.batch_decode(
-        outputs,
-        skip_special_tokens=True
-    )
+    # 2️⃣ Windows fallback
+    windows_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    if os.path.exists(windows_path):
+        pytesseract.pytesseract.tesseract_cmd = windows_path
+        return windows_path
 
+    # 3️⃣ Safe fallback (NO CRASH)
+    return None
+
+# =================================================
+# OCR INITIALIZATION (ONLINE + OFFLINE SAFE)
+# =================================================
+TESSERACT_PATH = configure_tesseract()
+
+def show_ocr_status():
+    if TESSERACT_PATH:
+        st.success("✅ OCR enabled (scanned PDFs supported)")
+    else:
+        st.info("ℹ️ OCR disabled (text-based PDFs only)")
+ 
 
 def load_css():
     css_path = Path(__file__).parent / "styles" / "theme.css"
-    with open(css_path) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    if css_path.exists():
+        with open(css_path) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 load_css()
 
@@ -600,13 +589,6 @@ def compute_contract_health(df):
     return max(0, min(100, health))
 
 
-# PAGE CONFIG
-
-st.set_page_config(
-    page_title="AI Contract Risk Dashboard",
-    page_icon="⚖️",
-    layout="wide"
-)
 
 
 
@@ -642,38 +624,8 @@ st.sidebar.markdown("""
 </ul>
 """, unsafe_allow_html=True)
 
-import os
-import shutil
-import pytesseract
-
-def configure_tesseract():
-    """
-    Configure Tesseract OCR for both:
-    - Local Windows development
-    - Streamlit Cloud / Linux deployment
-    """
-
-    # 1️⃣ Try system-installed tesseract (Linux / Streamlit Cloud / Mac)
-    tesseract_path = shutil.which("tesseract")
-    if tesseract_path:
-        pytesseract.pytesseract.tesseract_cmd = tesseract_path
-        return tesseract_path
-
-    # 2️⃣ Fallback: Windows default install path
-    windows_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    if os.path.exists(windows_path):
-        pytesseract.pytesseract.tesseract_cmd = windows_path
-        return windows_path
-
-    # 3️⃣ Final fallback → clear error
-    raise RuntimeError(
-        "Tesseract OCR not found. "
-        "Install Tesseract and add it to PATH (or install via Streamlit Cloud)."
-    )
 
 
-# Call once at app startup
-TESSERACT_PATH = configure_tesseract()
 
 
 # 🔢 EMOJI NUMBER NORMALIZER
@@ -871,11 +823,14 @@ def read_file(file, language="auto"):
         image = Image.open(io.BytesIO(pix.tobytes("png")))
 
         try:
-            ocr_text = pytesseract.image_to_string(
-                image,
-                lang=ocr_lang,
-                config="--psm 6"
-            )
+            if TESSERACT_PATH:
+                ocr_text = pytesseract.image_to_string(
+                    image,
+                    lang=ocr_lang,
+                    config="--psm 6"
+                )
+            else:
+                ocr_text = ""
             extracted_text.append(ocr_text)
         except Exception:
             extracted_text.append("")
@@ -1253,7 +1208,6 @@ with st.spinner("🔍 Optimizing OCR for detected language…"):
 
     # CONTRACT INTELLIGENCE
 
-    intelligence = extract_contract_intelligence(text)
 
     st.write(f"📑 **Total Clauses Detected:** {len(clauses)}")
 
@@ -1310,23 +1264,12 @@ with st.spinner("🔍 Optimizing OCR for detected language…"):
 
     clauses = translated_clauses
 
-    # 🔤 CLAUSE TYPE-HINT NORMALIZATION (ONCE, FAST)
+    # 🔤 CLAUSE TYPE-HINT NORMALIZATION (ONCE, FAST, SAFE)
+
+    # We do NOT batch-translate anymore (no MarianMT, no crashes)
+    # Clause type normalization already handles Hindi + English internally
+
     translated_type_hints = {}
-
-    if lang == "hi":
-        unique_hints = list({
-            clause.get("type_hint", "").strip()
-            for clause in clauses
-            if clause.get("type_hint")
-        })
-
-        if unique_hints:
-            try:
-                translated_hints = translate_hi_to_en_batch(unique_hints)
-            except Exception:
-                translated_hints = unique_hints  # 🔒 SAFE FALLBACK
-
-            translated_type_hints = dict(zip(unique_hints, translated_hints))
 
     # Clause Risk Analysis (FINAL – ENTERPRISE SAFE)
     rows = []

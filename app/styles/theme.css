@@ -858,3 +858,117 @@ div[data-testid="stFileUploader"] ul li {
 }
 
 
+/* =================================================
+   📱 MOBILE VIEW AUTO-FIX (STREAMLIT RESPONSIVE)
+   Applies to screens ≤ 768px
+   ================================================= */
+@media (max-width: 768px) {
+
+    /* ---------- MAIN CONTAINER ---------- */
+    .main,
+    .block-container {
+        padding: 0.75rem !important;
+    }
+
+    /* ---------- METRIC CARDS ---------- */
+    div[data-testid="stMetric"] {
+        padding: 14px 16px !important;
+        min-height: auto !important;
+        border-radius: 16px !important;
+    }
+
+    div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+        font-size: 26px !important;   /* prevent overflow */
+        line-height: 1.1 !important;
+    }
+
+    div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
+        font-size: 13px !important;
+        margin-top: 4px !important;
+        text-align: center;
+    }
+
+    /* ---------- KPI ROWS (STACK CLEANLY) ---------- */
+    div[data-testid="column"] {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+
+    /* ---------- CARDS ---------- */
+    .card,
+    .card-dark,
+    .contract-card {
+        padding: 14px !important;
+        border-radius: 16px !important;
+        font-size: 13px !important;
+    }
+
+    /* ---------- SECTION TITLES ---------- */
+    .section-title {
+        font-size: 18px !important;
+        margin: 14px 0 8px 0 !important;
+    }
+
+    /* ---------- BUTTONS (THUMB FRIENDLY) ---------- */
+    div[data-testid="stButton"] button,
+    div[data-testid="stDownloadButton"] input[type="submit"] {
+        width: 100% !important;
+        padding: 14px 18px !important;
+        font-size: 14px !important;
+        border-radius: 14px !important;
+    }
+
+    /* ---------- FILE UPLOADER ---------- */
+    div[data-testid="stFileUploader"] {
+        padding: 14px !important;
+        border-radius: 14px !important;
+    }
+
+    /* ---------- EXPANDERS ---------- */
+    div[data-testid="stExpander"] {
+        border-radius: 14px !important;
+    }
+
+    div[data-testid="stExpander"] summary {
+        font-size: 14px !important;
+        padding: 10px 12px !important;
+    }
+
+    /* ---------- TABLE / DATAFRAME ---------- */
+    div[data-testid="stDataFrame"] {
+        font-size: 12px !important;
+    }
+
+    /* ---------- CHARTS ---------- */
+    canvas,
+    svg {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* ---------- SIDEBAR ---------- */
+    section[data-testid="stSidebar"] {
+        padding: 12px !important;
+    }
+
+    .sidebar-title {
+        font-size: 18px !important;
+    }
+
+    .sidebar-step {
+        font-size: 14px !important;
+    }
+
+    /* ---------- JSON / CODE ---------- */
+    div[data-testid="stJson"],
+    pre,
+    code {
+        font-size: 12px !important;
+        border-radius: 12px !important;
+    }
+
+    /* ---------- PREVENT HORIZONTAL SCROLL ---------- */
+    body {
+        overflow-x: hidden !important;
+    }
+}
