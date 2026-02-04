@@ -1,0 +1,26 @@
+EMPLOYMENT AGREEMENT
+
+This Employment Agreement is entered into between ABC Technologies Pvt Ltd
+(the "Employer") and the Employee on 1 January 2024.
+
+1. TERMINATION
+Termination rights under this clause should be clarified by specifying valid grounds for termination and an appropriate notice period. This revision aligns the clause with generally accepted Indian legal principles to reduce enforceability risks.
+
+2. NON-COMPETE
+The Employee shall not compete, directly or indirectly, with the business
+of the Employer for a period of two years after termination of employment.
+
+3. COMPENSATION
+The Employee shall receive a salary of ₹50,000 per month, payable on a
+monthly basis subject to applicable deductions.
+
+4. CONFIDENTIALITY
+The Employee shall keep all confidential information of the Employer
+strictly confidential during and after the term of employment.
+
+5. GENERAL OBLIGATIONS
+The Employee shall perform duties assigned from time to time and shall
+comply with all company policies as amended by the Employer.
+
+
+6. The Employer may terminate the Employee at any time, without notice, without assigning any reason, and without payment of any compensation or benefits. The Employee shall not be entitled to gratuity, notice pay, severance, or any post-termination dues, irrespective of length of service.

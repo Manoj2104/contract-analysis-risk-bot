@@ -1,0 +1,860 @@
+
+/* =========================================
+   METRIC CARDS – BIG, BOLD, CLEAN TYPOGRAPHY
+   ========================================= */
+
+/* Target the real Streamlit metric container */
+div[data-testid="stMetric"] {
+    padding: 22px 24px !important;
+}
+
+/* BIG NUMBER (7, 0, 40, 60) */
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    font-size: 42px !important;      /* BIG */
+    font-weight: 900 !important;     /* BOLD */
+    line-height: 1.05 !important;
+    letter-spacing: 0.5px !important;
+    color: #ffffff !important;
+}
+
+/* LABEL (Clauses, High Risk, etc.) */
+div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
+    font-size: 16px !important;      /* Clear & readable */
+    font-weight: 700 !important;     /* Bold but lighter than number */
+    margin-top: 8px !important;
+    color: #e0e7ff !important;       /* Light bluish white */
+    letter-spacing: 0.2px !important;
+}
+
+/* Remove Streamlit default spacing */
+div[data-testid="stMetric"] > div {
+    gap: 0.25rem !important;
+}
+
+
+/* =================================================
+   BLACK → BLUE GRADIENT CARDS (ALL BOXES)
+   ================================================= */
+.card,
+.card-dark,
+div[data-testid="stMetric"],
+div[data-testid="stContainer"] {
+    background:
+        linear-gradient(
+            160deg,
+            #0a0f1f 0%,
+            #0b1d3a 45%,
+            #020617 100%
+        ) !important;
+
+    border-radius: 22px !important;
+    padding: 20px 22px !important;
+
+    border: 1px solid rgba(59,130,246,0.25) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 12px 40px rgba(0,0,0,0.75),
+        0 0 22px rgba(37,99,235,0.35) !important;
+}
+
+/* =================================================
+   METRIC NUMBERS – BOLD & CLEAN
+   ================================================= */
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-size: 30px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.3px;
+}
+
+/* =================================================
+   METRIC LABELS – BOLD
+   ================================================= */
+div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
+    color: #e0e7ff !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    margin-top: 6px !important;
+}
+
+/* =================================================
+   NORMAL CARD TEXT – BOLD
+   ================================================= */
+.card *,
+.card-dark *,
+div[data-testid="stContainer"] * {
+    font-weight: 700 !important;
+}
+
+/* =================================================
+   HOVER EFFECT – PREMIUM LIFT
+   ================================================= */
+.card:hover,
+.card-dark:hover,
+div[data-testid="stMetric"]:hover {
+    transform: translateY(-3px);
+    transition: all 0.25s ease;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        0 20px 55px rgba(0,0,0,0.85),
+        0 0 35px rgba(37,99,235,0.55) !important;
+}
+
+/* =================================================
+   CONTRACT TYPE / CONFIDENCE BIG BOX
+   ================================================= */
+.contract-card {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(59,130,246,0.35),
+            transparent 60%
+        ),
+        linear-gradient(
+            160deg,
+            #020617,
+            #0b1d3a
+        );
+
+    border-radius: 26px;
+    padding: 26px 30px;
+
+    border: 1px solid rgba(59,130,246,0.35);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.1),
+        0 18px 60px rgba(0,0,0,0.85),
+        0 0 45px rgba(59,130,246,0.45);
+}
+
+
+/* =========================
+   ROOT / APP BACKGROUND
+   ========================= */
+html, body, [class*="stApp"] {
+    background-color: #0b0f14 !important;
+    color: #ffffff !important;
+}
+
+/* =========================
+   MAIN CONTENT AREA
+   ========================= */
+.main, .block-container {
+    background-color: #0b0f14 !important;
+    color: #ffffff !important;
+}
+
+/* =========================
+   DARK CARDS (NON-METRIC)
+   ========================= */
+.card {
+    background: #262626;
+    color: #ffffff;
+    padding: 18px;
+    border-radius: 15px;
+    border: 1px solid #3a3a3a;
+}
+
+/* =========================
+   SECTION TITLES
+   ========================= */
+.section-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 18px 0 10px 0;
+    color: #ffffff;
+}
+
+/* =========================
+   RISK COLORS
+   ========================= */
+.risk-high { color: #8b0000; font-weight: 800; }
+.risk-medium { color: #d97706; font-weight: 800; }
+.risk-low { color: #16a34a; font-weight: 800; }
+
+/* =========================
+   AI SUMMARY CARD
+   ========================= */
+.card-dark {
+    background: linear-gradient(145deg, #111827, #020617);
+    color: #e5e7eb;
+    padding: 90px;
+    border-radius: 16px;
+    border: 1px solid #2a2f36;
+}
+
+/* =========================
+   METRIC CARDS – DARK (MATCH IMAGE)
+   ========================= */
+div[data-testid="metric-container"] {
+    background: linear-gradient(180deg, #2b2b2b 0%, #1f1f1f 100%) !important;
+    border-radius: 18px !important;
+    padding: 18px 20px !important;
+    min-height: 92px;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 8px 22px rgba(0,0,0,0.45) !important;
+}
+
+/* Metric value */
+div[data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 28px !important;
+    line-height: 1.1 !important;
+}
+
+/* Metric label */
+div[data-testid="stMetricLabel"] {
+    color: #e5e7eb !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    margin-top: 6px !important;
+}
+
+/* =========================
+   STREAMLIT BANNERS
+   ========================= */
+div[data-testid="stSuccess"],
+div[data-testid="stInfo"] {
+    background-color: #f5f5f5 !important;
+    color: #111111 !important;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+div[data-testid="stSuccess"] *,
+div[data-testid="stInfo"] * {
+    color: #111111 !important;
+}
+
+/* =========================
+   WARNINGS – BLOOD RED
+   ========================= */
+div[data-testid="stWarning"],
+div[data-testid="stError"] {
+    background-color: #8b0000 !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+    font-weight: 800;
+}
+
+div[data-testid="stWarning"] *,
+div[data-testid="stError"] * {
+    color: #ffffff !important;
+}
+
+/* =========================
+   FORCE TEXT WHITE (DARK UI)
+   ========================= */
+p, span, label, li, h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
+
+
+/* =================================================
+   STREAMLIT METRIC – HARD OVERRIDE (FINAL)
+   ================================================= */
+
+/* Outer metric wrapper */
+div[data-testid="stMetric"] {
+    background: linear-gradient(180deg, #2b2b2b 0%, #1f1f1f 100%) !important;
+    border-radius: 18px !important;
+    padding: 18px 20px !important;
+    min-height: 92px !important;
+
+    border: 1px solid rgba(255,255,255,0.08) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 8px 22px rgba(0,0,0,0.45) !important;
+}
+
+/* Kill inner white containers */
+div[data-testid="stMetric"] > div {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Metric value */
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    font-size: 28px !important;
+    line-height: 1.1 !important;
+}
+
+/* Metric label */
+div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
+    color: #e5e7eb !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    margin-top: 6px !important;
+}
+
+/* Remove default spacing */
+div[data-testid="stMetric"] div {
+    gap: 0 !important;
+}
+
+/* Prevent Streamlit hover override */
+div[data-testid="stMetric"]:hover {
+    background: linear-gradient(180deg, #2b2b2b 0%, #1f1f1f 100%) !important;
+}
+/* # =================================================
+# SIDEBAR – DARK PREMIUM (UNCHANGED)
+# ================================================= */
+
+
+/* Sidebar base */
+section[data-testid="stSidebar"] {
+    background:
+        linear-gradient(
+            160deg,
+            #020617 0%,
+            #0b1d3a 45%,
+            #020617 100%
+        ) !important;
+
+    border-right: 1px solid rgba(59,130,246,0.25);
+}
+
+/* Sidebar cards */
+.sidebar-card {
+    background:
+        linear-gradient(
+            160deg,
+            #0a0f1f 0%,
+            #0b1d3a 50%,
+            #020617 100%
+        );
+
+    padding: 20px;
+    border-radius: 22px;
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(59,130,246,0.3);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.1),
+        0 12px 40px rgba(0,0,0,0.8),
+        0 0 25px rgba(37,99,235,0.35);
+
+    color: #ffffff;
+}
+
+/* Brand title */
+.sidebar-title {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+    color: #ffffff;
+}
+
+/* Brand subtitle */
+.sidebar-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: #c7d2fe;
+    margin-top: 4px;
+}
+
+/* Steps */
+.sidebar-step {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+/* File uploader text */
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] p {
+    color: #e0e7ff !important;
+    font-weight: 600;
+}
+
+/* Status badges */
+.sidebar-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.badge-wait {
+    background: rgba(59,130,246,0.15);
+    color: #c7d2fe;
+}
+
+.badge-done {
+    background: rgba(34,197,94,0.25);
+    color: #bbf7d0;
+}
+
+/* Divider */
+.sidebar-divider {
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(59,130,246,0.4),
+        transparent
+    );
+    margin: 14px 0;
+}
+
+
+/* =====================================
+   FILE UPLOADER — BLUE GRADIENT ONLY
+   ===================================== */
+
+/* Outer upload box */
+div[data-testid="stFileUploader"] {
+    background: linear-gradient(
+        135deg,
+        #020617 0%,
+        #0b1d3a 60%,
+        #1e3a8a 100%
+    ) !important;
+
+    border-radius: 16px !important;
+    padding: 18px !important;
+}
+
+/* Inner white panel (main culprit) */
+div[data-testid="stFileUploader"] section,
+div[data-testid="stFileUploader"] form,
+div[data-testid="stFileUploader"] > div {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Text inside uploader */
+div[data-testid="stFileUploader"] *,
+div[data-testid="stFileUploader"] span,
+div[data-testid="stFileUploader"] p,
+div[data-testid="stFileUploader"] label {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* Browse files button */
+div[data-testid="stFileUploader"] button {
+    background: linear-gradient(
+        135deg,
+        #1d4ed8,
+        #2563eb
+    ) !important;
+
+    color: #ffffff !important;
+    border: none !important;
+}
+
+/* Uploaded file row */
+div[data-testid="stFileUploader"] ul li {
+    background: rgba(2,6,23,0.9) !important;
+    color: #ffffff !important;
+}
+
+.main,
+.block-container,
+section[data-testid="stAppViewContainer"] {
+    background: linear-gradient(
+        160deg,
+        #020617 0%,
+        #1e0b3a 45%,
+        #020617 100%
+    ) !important;
+}
+
+
+/* =====================================
+   CLAUSE EXPANDER / CONTAINER → BLACK
+   ===================================== */
+
+/* Expander outer wrapper */
+div[data-testid="stExpander"] {
+    background-color: #020617 !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* Expander header (the clickable row) */
+div[data-testid="stExpander"] > details > summary {
+    background-color: #020617 !important;
+    color: #ffffff !important;
+    border-radius: 16px !important;
+}
+
+/* THIS IS THE WHITE PART (main culprit) */
+div[data-testid="stExpander"] > details > div {
+    background-color: #020617 !important;
+    color: #ffffff !important;
+    border-radius: 0 0 16px 16px !important;
+}
+
+/* Any container inside expander */
+div[data-testid="stExpander"] div,
+div[data-testid="stExpander"] p,
+div[data-testid="stExpander"] span {
+    color: #ffffff !important;
+}
+
+/* Remove default white shadow */
+div[data-testid="stExpander"] * {
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   DOWNLOAD BUTTON — REAL FIX (INPUT BASED)
+   ========================================= */
+
+/* Target the actual rendered element */
+div[data-testid="stDownloadButton"] input[type="submit"] {
+    
+    color: #ffffff !important;
+
+    border: 1px solid #2a2a2a !important;
+    border-radius: 14px !important;
+
+    padding: 12px 22px !important;
+    font-weight: 800 !important;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.65) !important;
+}
+
+/* Hover */
+div[data-testid="stDownloadButton"] input[type="submit"]:hover {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+}
+
+/* Kill ALL white wrapper layers */
+div[data-testid="stDownloadButton"],
+div[data-testid="stDownloadButton"] > div,
+div[data-testid="stDownloadButton"] form {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================
+   DOWNLOAD BUTTON – FORCE BLACK (FINAL)
+   ========================================= */
+
+/* Target Streamlit download input */
+div[data-testid="stDownloadButton"] input[type="submit"] {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+
+    border: 1px solid #2a2a2a !important;
+    border-radius: 14px !important;
+
+    padding: 12px 22px !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+
+    cursor: pointer !important;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.7) !important;
+}
+
+/* Hover effect */
+div[data-testid="stDownloadButton"] input[type="submit"]:hover {
+    background-color: #111111 !important;
+}
+
+/* Remove white wrapper layers */
+div[data-testid="stDownloadButton"],
+div[data-testid="stDownloadButton"] > div,
+div[data-testid="stDownloadButton"] form {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* =================================================
+   UNIVERSAL ACTION BUTTON – BLACK → PURPLE GRADIENT
+   (Generate PDF + Download PDF)
+   ================================================= */
+
+/* ---------- STREAMLIT BUTTON (Generate PDF) ---------- */
+div[data-testid="stButton"] button {
+    background: linear-gradient(
+        135deg,
+        #020617 0%,
+        #1e1b4b 45%,
+        #4c1d95 100%
+    ) !important;
+
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 16px !important;
+
+    padding: 14px 26px !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.3px !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.7),
+        0 0 30px rgba(124,58,237,0.45) !important;
+
+    cursor: pointer !important;
+    transition: all 0.25s ease-in-out;
+}
+
+/* Hover */
+div[data-testid="stButton"] button:hover {
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #312e81,
+        #6d28d9
+    ) !important;
+
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 40px rgba(0,0,0,0.85),
+        0 0 45px rgba(139,92,246,0.65) !important;
+}
+
+/* ---------- DOWNLOAD BUTTON (stDownloadButton) ---------- */
+div[data-testid="stDownloadButton"] input[type="submit"] {
+    background: linear-gradient(
+        135deg,
+        #020617 0%,
+        #1e1b4b 45%,
+        #4c1d95 100%
+    ) !important;
+
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 16px !important;
+
+    padding: 14px 26px !important;
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.3px !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.7),
+        0 0 30px rgba(124,58,237,0.45) !important;
+
+    cursor: pointer !important;
+    transition: all 0.25s ease-in-out;
+}
+
+/* Hover */
+div[data-testid="stDownloadButton"] input[type="submit"]:hover {
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #312e81,
+        #6d28d9
+    ) !important;
+
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 40px rgba(0,0,0,0.85),
+        0 0 45px rgba(139,92,246,0.65) !important;
+}
+
+/* ---------- REMOVE WHITE WRAPPERS ---------- */
+div[data-testid="stButton"],
+div[data-testid="stButton"] > div,
+div[data-testid="stDownloadButton"],
+div[data-testid="stDownloadButton"] > div,
+div[data-testid="stDownloadButton"] form {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+/* =================================================
+   KEY ENTITIES / JSON VIEW – DARK MODE FIX
+   ================================================= */
+
+/* JSON container background */
+div[data-testid="stJson"],
+div[data-testid="stJson"] > div,
+div[data-testid="stJson"] pre {
+    background: linear-gradient(
+        160deg,
+        #020617 0%,
+        #1e1b4b 45%,
+        #020617 100%
+    ) !important;
+
+    color: #ffffff !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(139,92,246,0.35) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 10px 28px rgba(0,0,0,0.75),
+        0 0 30px rgba(124,58,237,0.35) !important;
+}
+
+/* JSON text */
+div[data-testid="stJson"] * {
+    color: #e5e7eb !important;
+    font-weight: 600 !important;
+}
+
+/* Expanders INSIDE JSON */
+div[data-testid="stJson"] summary {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+/* Remove inner white panels */
+div[data-testid="stJson"] code {
+    background: transparent !important;
+    color: #e5e7eb !important;
+}
+
+/* Scrollbar (optional polish) */
+div[data-testid="stJson"]::-webkit-scrollbar {
+    height: 6px;
+}
+div[data-testid="stJson"]::-webkit-scrollbar-thumb {
+    background: #7c3aed;
+    border-radius: 10px;
+}
+
+/* =================================================
+   SIDEBAR – AI BLACK → PURPLE GRADIENT (FINAL)
+   ================================================= */
+
+/* Sidebar base */
+section[data-testid="stSidebar"] {
+    background: linear-gradient(
+        160deg,
+        #020617 0%,
+        #1e1b4b 45%,
+        #4c1d95 100%
+    ) !important;
+
+    border-right: 1px solid rgba(139,92,246,0.35);
+}
+
+/* Remove inner white layers */
+section[data-testid="stSidebar"] > div {
+    background: transparent !important;
+}
+
+/* Sidebar cards */
+.sidebar-card {
+    background: linear-gradient(
+        145deg,
+        #020617,
+        #312e81
+    );
+    padding: 20px;
+    border-radius: 22px;
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(139,92,246,0.4);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.08),
+        0 14px 40px rgba(0,0,0,0.8),
+        0 0 30px rgba(124,58,237,0.4);
+}
+
+/* Sidebar title */
+.sidebar-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.4px;
+}
+
+/* Sidebar subtitle */
+.sidebar-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ddd6fe;
+}
+
+/* Sidebar steps */
+.sidebar-step {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+/* Sidebar text */
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] li {
+    color: #e5e7eb !important;
+    font-weight: 600;
+}
+
+/* Divider */
+.sidebar-divider {
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(139,92,246,0.6),
+        transparent
+    );
+    margin: 14px 0;
+}
+
+/* =====================================
+   FILE UPLOADER (SIDEBAR)
+   ===================================== */
+div[data-testid="stFileUploader"] {
+    background: linear-gradient(
+        135deg,
+        #020617,
+        #312e81,
+        #4c1d95
+    ) !important;
+
+    border-radius: 18px !important;
+    padding: 18px !important;
+
+    border: 1px solid rgba(139,92,246,0.4);
+}
+
+/* Remove inner white */
+div[data-testid="stFileUploader"] section,
+div[data-testid="stFileUploader"] form,
+div[data-testid="stFileUploader"] > div {
+    background: transparent !important;
+}
+
+/* Browse files button */
+div[data-testid="stFileUploader"] button {
+    background: linear-gradient(
+        135deg,
+        #4c1d95,
+        #7c3aed
+    ) !important;
+
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    border-radius: 12px !important;
+    border: none !important;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.6);
+}
+
+/* Uploaded file row */
+div[data-testid="stFileUploader"] ul li {
+    background: rgba(2,6,23,0.9) !important;
+    color: #ffffff !important;
+    border-radius: 10px;
+}
+
+

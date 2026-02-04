@@ -1,0 +1,41 @@
+mployee Appointment Agreement
+
+This agreement is made on 01 May 2025 between the following two parties:
+
+Employer:
+ABC Technologies Private Limited,
+Registered Office,
+Chennai, Tamil Nadu, India.
+
+Employee:
+Mr. Rahul Kumar,
+Residence: Bengaluru,
+Karnataka, India.
+
+1. Appointment:
+
+The employer appoints the employee to the position of Software Engineer, and the employee accepts this appointment.
+
+2. Term of Employment:
+
+This agreement shall be valid for a period of 12 months and shall be effective from 01 May 2025 to 30 April 2026.
+
+3. Salary:
+
+The employee shall be paid a monthly salary of ₹50,000 (Rupees Fifty Thousand only).
+
+4. Duties and Responsibilities:
+
+The employee shall perform their duties honestly and in accordance with the rules and policies of the company.
+
+5. Confidentiality:
+
+The employee shall not disclose any confidential information of the company to any third party.
+
+6. Termination of Agreement:
+
+Either party may terminate this agreement by giving 30 days’ prior written notice.
+
+7. Governing Law and Jurisdiction:
+
+This agreement shall be governed by the laws of India, and the courts at Chennai shall have jurisdiction.
