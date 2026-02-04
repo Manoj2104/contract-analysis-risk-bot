@@ -46,7 +46,6 @@ logs/
 
 # ==================================================
 # Generated Reports & Outputs
-# (Keep sample PDF manually if needed)
 # ==================================================
 data/outputs/
 reports/
@@ -63,15 +62,10 @@ htmlcov/
 # ==================================================
 # OS-Specific Files
 # ==================================================
-# Windows
 Thumbs.db
 Desktop.ini
 $RECYCLE.BIN/
-
-# macOS
 .DS_Store
-
-# Linux
 *~
 
 # ==================================================
@@ -100,15 +94,22 @@ dist/
 node_modules/
 
 # ==================================================
-# Sensitive User Files
+# Sensitive User Files (LIMITED)
 # ==================================================
 *.docx
 *.pdf
-*.txt
+
+# ❌ DO NOT IGNORE ALL TXT FILES
+# *.txt   ← REMOVED (this broke requirements.txt)
+
+# ==================================================
+# Explicitly Allow Critical Files
+# ==================================================
+!requirements.txt
+!packages.txt
 
 # ==================================================
 # Allow Sample Files Explicitly
-# (Keep demo contracts if needed)
 # ==================================================
 !data/samples/*.pdf
 !data/samples/*.txt
