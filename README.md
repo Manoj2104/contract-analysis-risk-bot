@@ -278,7 +278,7 @@ pytest
  ▶️ How to Run the Application
 
 ```bash
-git clone https://github.com/yourusername/contractriskbot.git
+git clone https://github.com/Manoj2104/contractriskbot.git
 cd contractriskbot
 pip install r requirements.txt
 streamlit run app/app.py
@@ -289,14 +289,14 @@ streamlit run app/app.py
  🌐 Live Demo
 
 **Live Application URL:**
-(Add your deployed link here)
+(https://contract-analysis-risk-bot-s.streamlit.app/)
 
 
 
  🎥 Demo Video
 
 **Demo Video Link:**
-(Add YouTube / Google Drive public link here)
+(https://drive.google.com/file/d/1s8fPuFEKkj2JeBNKtCWtPMaQIQhEyo3J/view?usp=sharing)
 
 
 
