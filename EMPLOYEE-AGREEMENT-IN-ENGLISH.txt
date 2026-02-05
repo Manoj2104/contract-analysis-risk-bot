@@ -1,0 +1,131 @@
+EMPLOYEE AGREEMENT
+This Employee Agreement (“Agreement”) is made and entered into on 01 March 2026, by and between:
+
+Employer:
+BrightEdge Technologies Private Limited, a company incorporated under the laws of India, having its registered office at No. 24, 2nd Floor, Anna Nagar East, Chennai – 600102, Tamil Nadu, India (hereinafter referred to as the “Company” or “Employer”)
+AND
+
+Employee:
+Rahul Kumar, residing at Flat No. 12, Green Park Apartments, Velachery, Chennai – 600042, Tamil Nadu, India (hereinafter referred to as the “Employee”).
+The Employer and Employee are collectively referred to as the “Parties”.
+
+1. Appointment & Designation
+1.	The Company hereby appoints the Employee as Data Analyst.
+2.	The Employee agrees to perform all assigned duties sincerely, efficiently, and in the best interest of the Company.
+3.	The Employee shall report to Mr. Arjun Mehta, Project Manager.
+
+2. Nature of Employment
+1.	The employment shall be full-time and permanent.
+2.	This Agreement does not create any partnership, agency, or contractor relationship.
+3.	The Employee shall devote full working time and attention to Company duties.
+
+3. Date of Commencement & Term
+1.	Employment shall commence on 01 March 2026.
+2.	This Agreement shall remain in force unless terminated as per Clause 13.
+
+4. Work Location & Working Hours
+1.	The primary work location shall be Chennai Office, with occasional remote work as approved.
+2.	Working hours shall be 9:30 AM to 6:30 PM, Monday to Friday.
+3.	Additional working hours may be required depending on business needs, without overtime compensation unless mandated by law.
+
+5. Duties & Responsibilities
+The Employee shall:
+•	Analyze and interpret business data
+•	Prepare reports and dashboards
+•	Maintain data confidentiality
+•	Follow Company policies and instructions
+•	Meet project deadlines and performance expectations
+•	Avoid conflicts of interest
+
+6. Compensation & Benefits
+1.	The Employee shall receive a salary of ₹6,00,000 (Rupees Six Lakhs Only) per annum, payable monthly.
+2.	Salary is subject to income tax and statutory deductions.
+3.	Additional benefits include:
+o	Performance bonus (discretionary)
+o	Health insurance
+o	Paid leaves as per Company policy
+
+7. Leave Policy
+1.	The Employee is entitled to:
+o	12 Paid Leaves per year
+o	8 Casual Leaves per year
+o	6 Sick Leaves per year
+2.	Leave approval must be obtained in advance except in emergencies.
+3.	Unused leave shall lapse at the end of the calendar year unless otherwise stated.
+
+8. Confidentiality
+1.	The Employee shall maintain strict confidentiality of all Company information including:
+o	Client details
+o	Financial data
+o	Internal documents
+o	Software, models, and source code
+2.	This obligation shall continue even after termination.
+3.	Any breach shall attract disciplinary and legal action.
+
+9. Intellectual Property Rights
+1.	All intellectual property created during employment shall be the exclusive property of the Company.
+2.	This includes reports, software, algorithms, designs, documents, and research work.
+3.	The Employee waives any ownership or moral rights over such work.
+
+10. Non-Compete & Non-Solicitation
+1.	During employment, the Employee shall not engage in any competing business.
+2.	For 6 months after termination, the Employee shall not:
+o	Solicit Company clients
+o	Poach Company employees
+o	Use Company trade secrets
+3.	These restrictions shall apply as permitted under applicable law.
+
+11. Code of Conduct
+The Employee agrees to:
+•	Act professionally and ethically
+•	Avoid harassment, discrimination, or misconduct
+•	Protect Company reputation
+•	Use Company resources responsibly
+
+12. Performance Evaluation
+1.	Performance shall be reviewed quarterly.
+2.	Continued employment depends on satisfactory performance.
+3.	The Company may initiate corrective or disciplinary action if required.
+
+13. Termination
+1.	Either Party may terminate this Agreement by giving 30 days’ written notice.
+2.	The Company may terminate employment immediately without notice in case of:
+o	Gross misconduct
+o	Fraud or theft
+o	Breach of confidentiality
+o	Willful negligence
+3.	Upon termination, all Company assets must be returned.
+
+14. Notice Period & Final Settlement
+1.	Notice period may be waived by the Company at its discretion.
+2.	Final settlement shall include:
+o	Salary till last working day
+o	Approved reimbursements
+o	Statutory deductions
+
+15. Governing Law & Jurisdiction
+1.	This Agreement shall be governed by the laws of India.
+2.	Courts of Chennai, Tamil Nadu shall have exclusive jurisdiction.
+
+16. Amendments
+Any changes to this Agreement must be in writing and signed by both Parties.
+
+17. Severability
+If any provision is held invalid, the remaining provisions shall continue to be enforceable.
+
+18. Entire Agreement
+This Agreement constitutes the complete understanding between the Parties and supersedes all prior communications.
+
+19. Acceptance
+Employer
+For BrightEdge Technologies Private Limited
+Authorized Signatory: Suresh Raman
+Designation: Director
+Signature: ____________________
+Date: 01 March 2026
+Employee
+Name: RahulKumar
+Signature: ____________________
+Date: 01 March 2026
+
+
